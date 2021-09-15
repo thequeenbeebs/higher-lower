@@ -20,6 +20,8 @@ def compare(guess, followers_a, followers_b):
 def play_game():
     person_a = generate_random_account()
     person_b = generate_random_account()
+    if person_a == person_b:
+        person_b = generate_random_account()
     result = ""
     game_over = False
     user_score = 0
@@ -38,7 +40,7 @@ def play_game():
         print(f"Compare A: {person_a['name']}, a {person_a['description']}, from {person_a['country']}.")
         print(art.vs)
         print(f"Against B: {person_b['name']}, a {person_b['description']}, from {person_b['country']}.")
-        guess = input("Who has more followers? Type 'A' or 'B': ")
+        guess = input("Who has more followers? Type 'A' or 'B': ").upper()
         result = compare(guess, person_a['follower_count'], person_b['follower_count'])
         person_a = person_b
         person_b = generate_random_account()
